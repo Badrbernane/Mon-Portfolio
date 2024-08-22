@@ -1,0 +1,88 @@
+<div class="register-form">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Create Account</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-grid-list cols="2" rowHeight="100px" gutterSize="10px" [formGroup]="registerForm">
+                <mat-grid-tile>
+                    <mat-form-field color="accent">
+                        <mat-label>Username</mat-label>
+                        <input matInput formControlName="nom">
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field color="accent">
+                        <mat-label>Lastname</mat-label>
+                        <input matInput formControlName="prenom">
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="2" >
+                    <mat-form-field color="accent">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="gmail">
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="2">
+                    <mat-form-field color="accent">
+                        <mat-label>Mobile Number</mat-label>
+                        <input matInput formControlName="numTelephone">
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field color="accent">
+                        <mat-label>Password</mat-label>
+                        <input [type]="hidePwdContent ? 'password' : 'text'" matInput formControlName="mot_de_passe">
+                        <button mat-icon-button matSuffix (click)="hidePwdContent = !hidePwdContent">
+                            <mat-icon>
+                                {{hidePwdContent ? "visibility_off" : "visibility_on"}}
+                            </mat-icon>
+                        </button>
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field color="accent">
+                        <mat-label>Repeat Password</mat-label>
+                        <input [type]="hidePwdContent ? 'password' : 'text'" matInput formControlName="mot_de_passe_confirmation">
+                        <button mat-icon-button matSuffix (click)="hidePwdContent = !hidePwdContent">
+                            <mat-icon>
+                                {{hidePwdContent ? "visibility_off" : "visibility_on"}}
+                            </mat-icon>
+                        </button>
+                        <mat-error>Field is required!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button="accent" [disabled]="registerForm.invalid" (click)="register()">Register</button>
+        </mat-card-actions>
+
+        <mat-card-actions>
+            <p>Already have an account?</p>
+            <a mat-stroked-button color="accent" routerLink="/login">login</a>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<div class="library-info" *ngIf="false">
+    <head>Information</head>
+    <mat-list>
+        <mat-list-item  >
+            <p>
+                vous pouvez créer votre compte pour construire et personaliser votre app
+            </p>
+        </mat-list-item>
+        <mat-list-item>
+            <p>
+                entrer votre gmail et mot de passe
+            </p>
+        </mat-list-item>
+    </mat-list>
+</div>

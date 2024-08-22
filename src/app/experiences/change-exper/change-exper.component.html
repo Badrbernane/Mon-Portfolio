@@ -1,0 +1,117 @@
+<form [formGroup]="newexperience">
+<section class="insert-exp">
+    <p>Insert Experience</p>
+
+    <mat-form-field appearance="outline" color="accent" class="entre">
+        <mat-label>Entreprise</mat-label>
+        <input matInput formControlName="entreprise">
+        <mat-error>Field is required!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent" class=""mt>
+        <mat-label>Date Debut</mat-label>
+        <input matInput formControlName="datedebut">
+        <mat-error>Field is required!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent" class=""mt>
+        <mat-label>Date Fin</mat-label>
+        <input  matInput formControlName="datefin">
+        <mat-error>Field is required!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent" class=""mt>
+        <mat-label>Description</mat-label>
+        <input  matInput formControlName="remarque">
+        <mat-error>Field is required!</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent" class=""mt>
+        <mat-label>Date Creation</mat-label>
+        <input  matInput formControlName="datecreation">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent" class=""mt>
+        <mat-label>Date Modification</mat-label>
+        <input matInput formControlName="datemodification">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" color="accent" >
+        <mat-label>Votre ID</mat-label>
+        <input matInput formControlName="idPersonnes">
+        <mat-error>Field is required!</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" [disabled]="isEditing || newexperience.invalid" (click)="addnewexperience()">
+        Insert
+    </button>
+
+    <button mat-raised-button color="primary" [disabled]="!isEditing || newexperience.invalid" (click)="updateExperience()">
+        valid update
+    </button>
+</section>
+
+<section class="table">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef class="f">ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="entreprise">
+            <th mat-header-cell *matHeaderCellDef class="f">Entreprise</th>
+            <td mat-cell *matCellDef="let element">{{element.entreprise}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="remarque">
+            <th mat-header-cell *matHeaderCellDef class="f">Description</th>
+            <td mat-cell *matCellDef="let element">{{element.remarque}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="datedebut">
+            <th mat-header-cell *matHeaderCellDef class="f">Date Debut</th>
+            <td mat-cell *matCellDef="let element">{{element.datedebut}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="datefin">
+            <th mat-header-cell *matHeaderCellDef class="f">Date Fin</th>
+            <td mat-cell *matCellDef="let element">{{element.datefin}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="datecreation">
+            <th mat-header-cell *matHeaderCellDef class="f">Date Creation</th>
+            <td mat-cell *matCellDef="let element">{{element.datecreation}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="datemodification">
+            <th mat-header-cell *matHeaderCellDef class="f">date modification</th>
+            <td mat-cell *matCellDef="let element">{{element.datemodification}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="idPersonnes">
+            <th mat-header-cell *matHeaderCellDef class="f">Votre id</th>
+            <td mat-cell *matCellDef="let element">{{element.idPersonnes}}</td>
+        </ng-container>
+
+        <<ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" matTooltip="Edit this experience" (click)="editExperience(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="warn" matTooltip="Delete this experience" (click)="deleteExperience(element)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+            </td>
+        </ng-container>
+        
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+        
+    </table>
+</section>
+</form>
+

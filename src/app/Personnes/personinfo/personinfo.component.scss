@@ -1,0 +1,81 @@
+/*:host{
+    display: flex;
+}
+
+mat-form-field {
+    width: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+
+mat-card{
+    width: max-content;
+    background-color: rgb(37, 51, 46);
+    margin: 2rem;
+}
+
+
+
+
+
+mat-card-actions{
+    margin: 11px;
+    width: 80%;
+}*/
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+.search-field {
+    width: 100%;
+}
+
+.info-card {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 2rem;
+    text-align: center;
+    height: 200px;
+    background-color: rgb(194, 235, 236);
+    color: black;
+    .lien{
+        background-color: aliceblue;
+    }
+}
+
+.image-card {
+    text-align: center;
+}
+
+.image-card img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+}
+
+.description-card {
+    padding: 20px;
+}
+
+.fa-facebook {
+    color: #3b5998; /* Couleur officielle de Facebook */
+}
+
+.fa-linkedin {
+    color: #0077b5; /* Couleur officielle de LinkedIn */
+}
+
+.fa-instagram {
+    color: #E4405F; /* Couleur officielle d'Instagram */
+}
+
+.fa-twitter {
+    color: #1DA1F2; /* Couleur officielle de Twitter */
+}

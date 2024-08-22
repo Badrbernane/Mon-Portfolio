@@ -1,0 +1,16 @@
+
+<mat-nav-list>
+    <mat-card>
+        <mat-card-content>
+            <p>{{ panelName }}</p>
+        </mat-card-content>
+    </mat-card>
+
+    <a *ngFor="let item of navItems; trackBy: trackByFn" 
+    mat-list-item 
+    [routerLink]="'/' + item.link" 
+    routerLinkActive="active-link">
+                                    <!-- Condition pour vérifier la connexion -->
+    {{ item.value }}
+    </a>
+</mat-nav-list>

@@ -1,0 +1,38 @@
+<button mat-icon-button color="primary" routerLink="/modifexp" matTooltip="Edit the experiences">
+    <mat-icon>edit</mat-icon>
+</button>
+
+<mat-expansion-panel [expanded]="false"  *ngFor="let item of experience; trackBy: trackById">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <span>
+            {{item.datedebut}}
+        </span>
+        </mat-panel-title>
+
+        <mat-panel-description>
+            <div class="sg">
+                The Entreprise:
+                <span>
+                    {{item.entreprise}}
+                </span>
+            </div>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <section>
+        <div class="titi">
+            Date Fin : 
+            <span>
+                {{item.datefin}}
+            </span>
+        </div>
+        <div class="coco">
+            Description:
+            <span>
+                {{item.remarque}}
+            </span>
+        </div>
+    </section>
+</mat-expansion-panel>
+

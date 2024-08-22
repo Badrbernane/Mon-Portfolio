@@ -1,0 +1,49 @@
+:host{
+    display: block;
+    padding: 1rem 0;
+    background-color: rgb(29, 31, 31);
+}
+
+mat-form-field{
+    width: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+mat-card{
+    width: max-content;
+    margin-bottom: 1rem;
+    background-color: rgb(28, 71, 49);
+    mat-card-contnet{
+        font-size: 1.5rem;
+    }
+}
+
+mat-accordion{
+    mat-panel-title{
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: rgb(243, 243, 188);
+    }
+
+    mat-panel-description{
+        font-size: 1.2rem;
+        font-style: italic;
+        letter-spacing: 1px;
+    }
+}
+
+a{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+mat-icon {
+    color: green; /* Couleur pour check_circle */
+}
+
+mat-icon.cancel {
+    color: red; /* Couleur pour cancel */
+}

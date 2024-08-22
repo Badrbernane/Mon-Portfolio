@@ -1,0 +1,74 @@
+<mat-card  *ngIf="newformation">
+    <mat-card-header>
+        <p>Add New Formation</p>
+    </mat-card-header>
+
+    <mat-card-content [formGroup]="newformation">
+        <mat-grid-list cols="4" rowHeight="100px" gutterSize="10px">
+            <mat-form-field color="accent" class="formation-titre">
+                <mat-label>Formation Title</mat-label>
+                <input matInput formControlName="titre">
+                <mat-error>Field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent" class="formation-ecole">
+                <mat-label>Ecole</mat-label>
+                <input matInput formControlName="ecole">
+                <mat-error>Field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent" class="formation-dated">
+                <mat-label>Date Debut</mat-label>
+                <input matInput formControlName="datedebut">
+                <mat-error>Field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent" class="formation-datef">
+                <mat-label>Date Fin</mat-label>
+                <input matInput formControlName="datefin">
+                <mat-error>Field is required!</mat-error>
+            </mat-form-field>
+        </mat-grid-list>
+        <mat-grid-list cols="4" rowHeight="100px" gutterSize="10px">
+            <mat-form-field color="accent" class="fg">
+                <mat-label>Description</mat-label>
+                <input matInput formControlName="description">
+                <mat-error>Field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent" class="formatin-c">
+                <mat-label>Date Creation</mat-label>
+                <input matInput formControlName="date_creation">
+                <mat-error>Field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent" class="formatin-c">
+                <mat-label>Date Modification</mat-label>
+                <input matInput formControlName="date_modification">
+                <mat-error>Field is required!</mat-error>
+            </mat-form-field>
+            <mat-form-field color="accent" class="formation-cc">
+                <mat-label>votre ID*</mat-label>
+                <input matInput formControlName="idPersonnes">
+                <mat-error>Field is required!</mat-error>
+            </mat-form-field>
+        </mat-grid-list>
+
+        <!-- Slide Toggle pour "actuel" -->
+        <mat-slide-toggle formControlName="actuel" class="smayka">Actuel</mat-slide-toggle>
+        <button mat-stroked-button color="accent" [disabled]="newformation.invalid" (click)="addnewformation()">
+            <span>Add</span>
+        </button>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="y">
+    <mat-card-header>
+        <p>Delete Existing Formation</p>
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-form-field color="warn">
+            <mat-label>Formation ID</mat-label>
+            <input matInput [formControl]="deleteformation">
+        </mat-form-field>
+        <button mat-stroked-button class="bot" color="accent" [disabled]="deleteformation.invalid" (click)="deleteExistformation()">
+            <span>Delete</span>
+        </button>
+    </mat-card-content>
+</mat-card>
