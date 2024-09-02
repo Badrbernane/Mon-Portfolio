@@ -87,6 +87,10 @@ import {MatDialog} from '@angular/material/dialog';
     MatSliderModule,
     MatCardModule,
     MatDialogModule,
+    MatIconModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatSelectModule,
     ],
 })
 export class MaterialModule { }

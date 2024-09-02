@@ -1,0 +1,30 @@
+/* Card Styling */
+mat-card {
+    margin: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.languages-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.language-card {
+    width: 100%;
+    max-width: 250px; /* Adjust width as needed */
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Header and Content Styling */
+mat-card-header {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.language-details p {
+    margin: 8px 0;
+}

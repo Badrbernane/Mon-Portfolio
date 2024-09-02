@@ -1,9 +1,8 @@
 mat-card{
     text-align: center;
-    background-color: rgb(36, 33, 29);
     margin: 0.1rem auto;
     width: 90%;
-    height: 11%;
+    height: 10%;
     border: 0.5px solid rgb(186, 186, 240);
 }
 
@@ -14,9 +13,6 @@ p{
 }
 
 mat-nav-list{
-    background-image: url('images.jpeg');
-    background-size: cover; /* Ajuste l'image pour couvrir toute la carte */
-     background-position: center; /* Centre l'image */
     height: 663px;
     border-right: 0.5px solid rgb(186, 186, 240);
 }

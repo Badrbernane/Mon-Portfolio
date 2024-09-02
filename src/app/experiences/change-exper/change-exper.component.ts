@@ -139,7 +139,10 @@ export class ChangeExperComponent implements OnInit {
             this.snackBar.open(res, 'OK', { duration: 3000 });
             if (res === 'deleted') {
               this.dataSource.data = this.dataSource.data.filter(exp => exp.id !== experience.id);
-              this.dataSource._updateChangeSubscription(); // Déclenche la mise à jour de la table
+              this.dataSource._updateChangeSubscription();
+              console.log('Après suppression:', this.dataSource.data); // Déclenche la mise à jour de la table
+              this.dataSource.data = [res, ...this.dataSource.data];
+
             }
           },
           (error) => {

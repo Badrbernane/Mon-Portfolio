@@ -1,154 +1,139 @@
-<div class="register-form">
-    <mat-card>
-        <mat-card-header>
-            <mat-card-title>Personalize your profile</mat-card-title>
-        </mat-card-header>
+<div class="modifperson-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Modifier les Informations Personnelles</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="newpersonne" (ngSubmit)="onSubmit()" class="register-form">
+        <!-- ID (Lecture seule) -->
+        <mat-form-field >
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="id" >
+        </mat-form-field>
 
-        <mat-card-content>
-            <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Nom</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Prenom</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Age</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
+        <!-- Nom -->
+        <mat-form-field >
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="nom">
+          <mat-error *ngIf="newpersonne.get('nom')">Le nom est requis.</mat-error>
+        </mat-form-field>
 
-            <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Email</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Code postale</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Mot de passe</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
+        <!-- Prénom -->
+        <mat-form-field >
+          <mat-label>Prénom</mat-label>
+          <input matInput formControlName="prenom">
+          <mat-error *ngIf="newpersonne.get('prenom')">Le prénom est requis.</mat-error>
+        </mat-form-field>
 
-            
-            <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>nombre d'experience</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Description</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Permis</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Titre Poste</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Photo</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Lien facebook</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Lien instagram</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Lien twitter</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Lien linkdin</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Number phone</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-form-field color="accent">
-                        <mat-label>Cv</mat-label>
-                        <input matInput>
-                        <mat-error>Field is required!</mat-error>
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile>
-                    <mat-card-actions>
-                        <button class="fin" mat-raised-button="accent">Valider</button>
-                    </mat-card-actions>
-                </mat-grid-tile>
-            </mat-grid-list>
-            <mat-card-actions>
-                <button mat-raised-button="warn">Delete this person</button>
-            </mat-card-actions>
-        </mat-card-content>
-    </mat-card>
+        <!-- Âge -->
+        <mat-form-field >
+          <mat-label>Âge</mat-label>
+          <input matInput formControlName="age" type="number">
+          <mat-error *ngIf="newpersonne.get('age')">L'âge est requis.</mat-error>
+        </mat-form-field>
+
+        <!-- Code Postal -->
+        <mat-form-field >
+          <mat-label>Code Postal</mat-label>
+          <input matInput formControlName="codepostal">
+          <mat-error *ngIf="newpersonne.get('codepostal')">Le code postal est requis.</mat-error>
+        </mat-form-field>
+
+        <!-- Gmail -->
+        <mat-form-field >
+          <mat-label>Gmail</mat-label>
+          <input matInput formControlName="gmail">
+          <mat-error *ngIf="newpersonne.get('gmail')">L'email est requis.</mat-error>
+          <mat-error *ngIf="newpersonne.get('gmail')">Email invalide.</mat-error>
+        </mat-form-field>
+
+        <!-- Permis -->
+        <mat-form-field >
+          <mat-label>Permis</mat-label>
+          <input matInput formControlName="permis">
+          <mat-error *ngIf="newpersonne.get('permis')">Le permis est requis.</mat-error>
+        </mat-form-field>
+
+        <!-- Description -->
+        <mat-form-field >
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-error *ngIf="newpersonne.get('description')">La description est requise.</mat-error>
+        </mat-form-field>
+
+        <!-- CV -->
+        <mat-form-field >
+          <mat-label>CV</mat-label>
+          <input matInput formControlName="cv">
+          <mat-error *ngIf="newpersonne.get('cv')">Le CV est requis.</mat-error>
+        </mat-form-field>
+
+        <!-- Titre du Poste -->
+        <mat-form-field >
+          <mat-label>Titre du Poste</mat-label>
+          <input matInput formControlName="titreposte">
+          <mat-error *ngIf="newpersonne.get('titreposte')">Le titre du poste est requis.</mat-error>
+        </mat-form-field>
+
+        <!-- Photo -->
+        <mat-form-field >
+          <mat-label>Photo</mat-label>
+          <input matInput formControlName="photo">
+          <mat-error *ngIf="newpersonne.get('photo')">La photo est requise.</mat-error>
+        </mat-form-field>
+
+        <!-- Liens -->
+        <mat-form-field >
+          <mat-label>Lien Facebook</mat-label>
+          <input matInput formControlName="lienfacebook">
+          <mat-error *ngIf="newpersonne.get('lienfacebook')">Le lien Facebook est requis.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field >
+          <mat-label>Lien LinkedIn</mat-label>
+          <input matInput formControlName="lienlinkdin">
+          <mat-error *ngIf="newpersonne.get('lienlinkdin')">Le lien LinkedIn est requis.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field >
+          <mat-label>Lien Instagram</mat-label>
+          <input matInput formControlName="lieninstagram">
+          <mat-error *ngIf="newpersonne.get('lieninstagram')">Le lien Instagram est requis.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field >
+          <mat-label>Lien Twitter</mat-label>
+          <input matInput formControlName="lientwitter">
+          <mat-error *ngIf="newpersonne.get('lientwitter')">Le lien Twitter est requis.</mat-error>
+        </mat-form-field>
+
+        <!-- Nombre d'Expérience -->
+        <mat-form-field >
+          <mat-label>Nombre d'Expérience</mat-label>
+          <input matInput formControlName="nombredexperience" type="number">
+          <mat-error *ngIf="newpersonne.get('nombredexperience')">Le nombre d'expérience est requis.</mat-error>
+        </mat-form-field>
+
+        <!-- Numéro de Téléphone -->
+        <mat-form-field >
+          <mat-label>Numéro de Téléphone</mat-label>
+          <input matInput formControlName="numTelephone">
+          <mat-error *ngIf="newpersonne.get('numTelephone')">Le numéro de téléphone est requis.</mat-error>
+        </mat-form-field>
+
+        <!-- Date de Modification -->
+       
+        <!-- Boutons -->
+        <div class="form-buttons">
+          <button mat-raised-button color="primary" type="submit">Enregistrer</button>
+          <button mat-button (click)="editPersonne()">Modifier</button>
+        </div>
+
+        <!-- Message d'erreur -->
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
-
-

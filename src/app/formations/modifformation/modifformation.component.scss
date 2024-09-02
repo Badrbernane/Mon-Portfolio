@@ -1,7 +1,7 @@
 mat-card{
     width: max-content;
     margin-bottom: 1rem;
-    background-color: rgb(39, 37, 34);
+    background-color: rgb(247, 236, 219);
 }
 mat-form-field{
     margin-left: 1.5rem;
@@ -13,9 +13,9 @@ p{
     font-size: large;
 }
 
-button{
+.bricol{
     width: 20%;
-    margin-left: 50rem;
+    margin-left: 30rem;
 }
 
 .smayka{
@@ -31,4 +31,20 @@ button{
 }
 mat-expansion-panel{
     margin-bottom: 1rem;
+}
+
+section.table{
+    min-width: 700px;
+    max-width: 1200px;
+}
+
+
+th.f{
+    font-size: large;
+    color: rgb(60, 145, 116);
+    font-style: italic;
+}
+
+button{
+    margin-left: 10px;
 }

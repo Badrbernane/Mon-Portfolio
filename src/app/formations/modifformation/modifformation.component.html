@@ -51,24 +51,68 @@
 
         <!-- Slide Toggle pour "actuel" -->
         <mat-slide-toggle formControlName="actuel" class="smayka">Actuel</mat-slide-toggle>
-        <button mat-stroked-button color="accent" [disabled]="newformation.invalid" (click)="addnewformation()">
+        <button mat-stroked-button color="accent" [disabled]="isEditing || newformation.invalid" (click)="addnewformation()" class="bricol">
             <span>Add</span>
         </button>
-    </mat-card-content>
-</mat-card>
 
-<mat-card class="y">
-    <mat-card-header>
-        <p>Delete Existing Formation</p>
-    </mat-card-header>
-
-    <mat-card-content>
-        <mat-form-field color="warn">
-            <mat-label>Formation ID</mat-label>
-            <input matInput [formControl]="deleteformation">
-        </mat-form-field>
-        <button mat-stroked-button class="bot" color="accent" [disabled]="deleteformation.invalid" (click)="deleteExistformation()">
-            <span>Delete</span>
+        <button mat-raised-button color="primary" [disabled]="!isEditing || newformation.invalid"  (click)="updateFormation()">
+            valid update
         </button>
     </mat-card-content>
 </mat-card>
+
+
+<section class="table">
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef class="f">ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="titre">
+            <th mat-header-cell *matHeaderCellDef class="f">Titre</th>
+            <td mat-cell *matCellDef="let element">{{element.titre}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef class="f">Description</th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="datedebut">
+            <th mat-header-cell *matHeaderCellDef class="f">Date Debut</th>
+            <td mat-cell *matCellDef="let element">{{element.datedebut}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="ecole">
+            <th mat-header-cell *matHeaderCellDef class="f">Ecole</th>
+            <td mat-cell *matCellDef="let element">{{element.ecole}}</td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="idPersonnes">
+            <th mat-header-cell *matHeaderCellDef class="f">Votre id</th>
+            <td mat-cell *matCellDef="let element">{{element.idPersonnes}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="primary" matTooltip="Edit this experience"  (click)="editFormation(element)">
+                    <mat-icon>edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="warn" matTooltip="Delete this experience"  (click)="deleteExistformation(element)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+
+            </td>
+        </ng-container>
+        
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+        
+    </table>
+</section>

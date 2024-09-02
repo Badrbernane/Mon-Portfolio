@@ -37,7 +37,7 @@
                 <mat-grid-tile>
                     <mat-form-field color="accent">
                         <mat-label>Password</mat-label>
-                        <input [type]="hidePwdContent ? 'password' : 'text'" matInput formControlName="mot_de_passe">
+                        <input [type]="hidePwdContent ? 'password' : 'text'" matInput formControlName="motdepasse">
                         <button mat-icon-button matSuffix (click)="hidePwdContent = !hidePwdContent">
                             <mat-icon>
                                 {{hidePwdContent ? "visibility_off" : "visibility_on"}}
@@ -49,7 +49,7 @@
                 <mat-grid-tile>
                     <mat-form-field color="accent">
                         <mat-label>Repeat Password</mat-label>
-                        <input [type]="hidePwdContent ? 'password' : 'text'" matInput formControlName="mot_de_passe_confirmation">
+                        <input [type]="hidePwdContent ? 'password' : 'text'" matInput formControlName="motdepasseconfirmation">
                         <button mat-icon-button matSuffix (click)="hidePwdContent = !hidePwdContent">
                             <mat-icon>
                                 {{hidePwdContent ? "visibility_off" : "visibility_on"}}

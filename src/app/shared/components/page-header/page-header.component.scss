@@ -1,5 +1,5 @@
 mat-toolbar {
-    background-color: rgb(73, 58, 40);
+    background-color: #f1beeb;
     .spacer{
         flex: 1 1 auto;
     }
@@ -9,6 +9,8 @@ mat-toolbar {
 
         button{
             margin-left: 1.5rem;
+            background-color: aliceblue;
+            margin-right: 1.5rem;
         }
     }
 }

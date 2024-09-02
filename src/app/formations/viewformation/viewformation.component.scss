@@ -1,30 +1,27 @@
-:host{
-    display: block;
-    padding: 1rem 0;
-    background-color: rgb(29, 31, 31);
-}
+
 
 mat-form-field{
     width: 500px;
     margin: 0 auto;
     display: block;
 }
-
+/*
 mat-card{
     width: max-content;
     margin-bottom: 1rem;
-    background-color: rgb(28, 71, 49);
+    background-color: rgb(241, 252, 246);
     mat-card-contnet{
         font-size: 1.5rem;
     }
 }
 
 mat-accordion{
+    margin-bottom: 3rem;
     mat-panel-title{
         font-size: 1.4rem;
         letter-spacing: 2px;
         font-weight: 500;
-        color: rgb(243, 243, 188);
+        color: #292926;
     }
 
     mat-panel-description{
@@ -41,9 +38,35 @@ a{
 }
 
 mat-icon {
-    color: green; /* Couleur pour check_circle */
+    color: green; 
 }
 
 mat-icon.cancel {
-    color: red; /* Couleur pour cancel */
+    color: red;
+}*/
+
+.text-success {
+    color: green;
+}
+
+.text-danger {
+    color: red;
+}
+
+.mat-card-header {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-expansion-panel-header {
+    background-color: #dff8e3;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+mat-card{
+    background-color: rgb(236, 250, 250);
 }

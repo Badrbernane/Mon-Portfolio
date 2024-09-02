@@ -3,8 +3,25 @@
     <span class="spacer"></span>
     <div class="user-info">
         <div class="name">WELCOOOOM</div>
-        <button mat-raised-button color="accent">Profile</button>
-        <button mat-raised-button color="warn">Log Out</button>
+        
+        <button mat-icon-button color="primary" [matMenuTriggerFor]="menu" matTooltip="Person">
+            <mat-icon>person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/profile">
+              <mat-icon>person</mat-icon>
+              <span>profile</span>
+            </button>
+            <button mat-menu-item routerLink="/changepassw">
+                <mat-icon>settings</mat-icon>
+                <span>Paramètres</span>
+              </button>
+              <button mat-menu-item (click)="logout()">
+                <mat-icon>logout</mat-icon>
+                <span>Déconnexion</span>
+              </button>
+            </mat-menu>
+
         
     </div>
 </mat-toolbar>

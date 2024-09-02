@@ -1,78 +1,83 @@
-<!--class="container">
-  <mat-form-field class="search-field" color="warn" appearance="outline">
-      <mat-label>search informations</mat-label>
-      <input matInput>
-      <button mat-icon-button matSuffix>
-          <mat-icon>search</mat-icon>
-      </button>
-  </mat-form-field>--> 
+<mat-card class="info-card animated-card">
+  <mat-card-header>
+    <mat-card-title class="name-title">{{ personne.nom }} {{ personne.prenom }}</mat-card-title>
+    <mat-card-subtitle class="job-title">{{ personne.titreposte }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="social-icons">
+      <a [href]="personne.lienfacebook" target="_blank" class="animated-icon">
+        <img src="https://z-m-static.xx.fbcdn.net/rsrc.php/v3/yD/r/5D8s-GsHJlJ.png" alt="Facebook" class="social-icon">
+      </a>
+      <a [href]="personne.lienlinkdin" target="_blank" class="animated-icon">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRokEYt0yyh6uNDKL8uksVLlhZ35laKNQgZ9g&s" alt="LinkedIn" class="social-icon">
+      </a>
+      <a [href]="personne.lieninstagram" target="_blank" class="animated-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/640px-Instagram_logo_2022.svg.png" alt="Instagram" class="social-icon">
+      </a>
+      <a [href]="personne.lientwitter" target="_blank" class="animated-icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/3938/3938028.png" alt="Twitter" class="social-icon">
+      </a>
+    </div>
+  </mat-card-content>
+</mat-card>
 
-  <mat-card class="info-card">
-      <mat-card-title><h1>Badr Bernane</h1></mat-card-title>
-      <mat-card-content>
-        <h4>Software Engineer</h4>
-        <div>
-          <mat-icon class="fa fa-facebook">facebook</mat-icon>
-          <mat-icon class="fa fa-linkedin">linkedin</mat-icon>
-          <mat-icon class="fa fa-instagram">instagram</mat-icon>
-          <mat-icon class="fa fa-twitter">twitter</mat-icon>
-        </div>
-      </mat-card-content>
+<div class="card-grid">
+  <mat-card class="contact-card animated-card">
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item class="animated-item">
+          <mat-icon mat-list-icon class="iconaa">email</mat-icon>
+          <h4 mat-line>{{ personne.gmail }}</h4>
+        </mat-list-item>
+        <mat-list-item class="animated-item">
+          <mat-icon mat-list-icon class="iconaa">cake</mat-icon>
+          <h4 mat-line>{{ personne.age }} ans</h4>
+        </mat-list-item>
+        <mat-list-item class="animated-item">
+          <mat-icon mat-list-icon class="iconaa">location_on</mat-icon>
+          <h4 mat-line>{{ personne.codepostal }}</h4>
+        </mat-list-item>
+        <mat-list-item class="animated-item">
+          <mat-icon mat-list-icon class="iconaa">directions_car</mat-icon>
+          <h4 mat-line>{{ personne.permis }}</h4>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
   </mat-card>
-
-  <mat-card class="in">
-      <mat-card-title>Téléphone</mat-card-title>
+  
+  <mat-card class="photo-card animated-card">
+    <img mat-card-image [src]="personne.photo" alt="Profile Photo" class="profile-photo animated-photo">
   </mat-card>
+</div>
 
-  <mat-card class="image-card">
-      <img mat-card-image src="badr.jpeg" alt="Image">
-  </mat-card>
-
-  <mat-card class="description-card">
-      <mat-card-content>
-          <p>Description</p>
-      </mat-card-content>
-  </mat-card>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<mat-form-field color="warn" appearance="outline">
-    <mat-label>search informations</mat-label>
-    <input matInput>
-    <button mat-icon-button matSuffix>
-        <mat-icon>search</mat-icon>
-    </button>
-</mat-form-field>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <mat-card-actions class="modif">
-    <a mat-stroked-button color="accent" routerLink="/modifperson">UPDATE PROFILE</a>
-  </mat-card-actions>-->
+<mat-card class="info-card animated-card">
+  <mat-card-content>
+    <p class="animated-item">{{ personne.description }}</p>
+    <div class="additional-info">
+      <mat-list>
+        <mat-list-item class="animated-item">
+          <mat-icon mat-list-icon class="iconaa">description</mat-icon>
+          <h4 mat-line>
+            Pour obtenir le CV, cliquez sur le bouton ci-dessous :
+            <a [href]="personne.cv" target="_blank" rel="noopener noreferrer">
+              <button mat-raised-button color="primary">
+                  Voir le CV
+              </button>
+          </a>
+          </h4>
+      </mat-list-item>
+        <mat-list-item class="animated-item">
+          <mat-icon mat-list-icon class="iconaa">work</mat-icon>
+          <h4 mat-line>{{ personne.nombredexperience }} ans d'expérience</h4>
+        </mat-list-item>
+        <mat-list-item class="animated-item">
+          <mat-icon mat-list-icon class="iconaa">phone</mat-icon>
+          <h4 mat-line>{{ personne.numTelephone }}</h4>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card-content>
+  <button mat-icon-button color="primary" routerLink="/modifperson" matTooltip="Edit" class="edit-button animated-button">
+    <mat-icon>edit</mat-icon>
+  </button>
+</mat-card>

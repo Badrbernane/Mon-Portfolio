@@ -25,6 +25,7 @@ export class ViewformationComponent {
       apiservice.getformation().subscribe({
         next: (res: any) => {
           this.formations = res;
+          this.filteredFormations = this.formations; // Initialiser ici pour afficher toutes les formations
           localStorage.setItem("angular18Login", JSON.stringify(this.formations));
           console.log(res);
         },

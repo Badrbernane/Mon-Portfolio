@@ -3,6 +3,7 @@ import { ViewPersonComponent } from './view-person/view-person.component';
 import { SharedModule } from '../shared/shared.module';
 import { PersoninfoComponent } from './personinfo/personinfo.component';
 import { ModifpersonComponent } from './modifperson/modifperson.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
@@ -10,7 +11,8 @@ import { ModifpersonComponent } from './modifperson/modifperson.component';
   declarations: [
     ViewPersonComponent,
     PersoninfoComponent,
-    ModifpersonComponent
+    ModifpersonComponent,
+    ChangePasswordComponent
   ],
   imports: [
     SharedModule

@@ -18,8 +18,8 @@ export class RegisterComponent {
       prenom: fb.control('', [Validators.required]),
       gmail: fb.control('', [Validators.required]),
       numTelephone: fb.control('', [Validators.required]),
-      mot_de_passe: fb.control('', [Validators.required]),
-      mot_de_passe_confirmation: fb.control('', [Validators.required]),
+      motdepasse: fb.control('', [Validators.required]),
+      motdepasseconfirmation: fb.control('', [Validators.required]),
     });
   }
 
@@ -29,8 +29,8 @@ export class RegisterComponent {
       prenom: this.registerForm.get("prenom")?.value,
       gmail: this.registerForm.get("gmail")?.value,
       numTelephone: this.registerForm.get("numTelephone")?.value,
-      mot_de_passe: this.registerForm.get("mot_de_passe")?.value,
-      mot_de_passe_confirmation: this.registerForm.get("mot_de_passe_confirmation")?.value,
+      motdepasse: this.registerForm.get("motdepasse")?.value,
+      motdepasseconfirmation: this.registerForm.get("motdepasseconfirmation")?.value,
     };
 
     this.apiService.register(Personne).subscribe(

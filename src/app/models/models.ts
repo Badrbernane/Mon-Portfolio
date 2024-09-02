@@ -3,21 +3,21 @@ export interface Personne {
     nom: string;
     prenom: string;
     age: number;
-    code_postal: string;
+    codepostal: string;
     gmail: string;
-    mot_de_passe: string;
+    motdepasse: string;
     permis: string;
     description: string;
-    titre_poste: string;
+    titreposte: string;
     photo: string;
-    lien_facebook: string;
-    lien_linkdin: string;
-    lien_instagram: string;
-    lien_twitter: string;
+    lienfacebook: string;
+    lienlinkdin: string;
+    lieninstagram: string;
+    lientwitter: string;
     cv: string;
-    nombre_d_experience: number;
-    date_creation: Date;
-    date_modification: Date;
+    nombredexperience: number;
+    datecreation: Date | null;
+    datemodification: Date | null;
     numTelephone: string;
 }
 
@@ -48,3 +48,60 @@ export interface experience{
 export interface ConfirmDialogData {
     title: string;
     message: string;}
+
+export interface projet{
+    id: number;
+    titre: string;
+    remarque: string;
+    client: string;
+    lien: string;
+    photo: string;
+    dateprojet: Date;
+    datecreation: Date;
+    datemodification: Date;
+    idPersonnes: number;
+}
+
+export interface certificat {
+    id: number;
+    nom: string;
+    source: string;
+    image: string;
+    datecreation: Date;
+    datemodification: Date;
+    idPersonnes: number;
+}
+
+export interface competence{
+    id: number;
+    nom: string;
+    datecreation: Date;
+    datemodification: Date;
+    date_creation: Date;
+}
+
+export interface Langue{
+    langueNom: any;
+    id: number;
+    nom: string;
+    datecreation: Date;
+    datemodification: Date;
+    niveau?: string;
+}
+
+export interface Interet{
+centreInteretNom: any;
+personneNom: any;
+    id: number;
+    nom: string;
+    datecreation: Date;
+    datemodification: Date;
+    date_creation: Date;
+}
+
+export interface changePassword{
+    id: number;
+    oldPassword: string;
+    newPassword: string;
+    confirmNewPassword: string;
+}

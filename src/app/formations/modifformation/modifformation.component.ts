@@ -3,6 +3,9 @@ import { ApiService } from './../../shared/services/api.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'modifformation',
@@ -11,15 +14,29 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ModifformationComponent {
     newformation: FormGroup;
-    deleteformation: FormControl;
+    dataSource = new MatTableDataSource<any>();
+    columns = [
+      'id',
+      'titre',
+      'datedebut',
+      'ecole',
+      'description',
+      'idPersonnes',
+      'delete',
+    ];
+    isEditing = false; // Variable pour suivre le mode édition
+    isAdding = true; // Variable pour suivre le mode ajout
+  
 
     constructor(
       fb: FormBuilder,
       private apiService: ApiService,
-      private snackBar: MatSnackBar
+      private snackBar: MatSnackBar,
+      private dialog: MatDialog
     )
     {
       this.newformation = fb.group({
+        id: [''],
         titre: fb.control('',[Validators.required]),
         description: fb.control('',[Validators.required]),
         datedebut: fb.control('',[Validators.required]),
@@ -31,10 +48,59 @@ export class ModifformationComponent {
         actuel:fb.control(false),
     });
 
-    this.deleteformation = fb.control('', [Validators.required]);
     }
 
-      
+    ngOnInit(): void {
+      this.apiService.getAllFormations().subscribe({
+        next: (res: any[]) => {
+          this.dataSource.data = res;
+        },
+        error: (err) => {
+          console.error('Erreur lors du chargement des expériences', err);
+        }
+      });
+    }
+
+    editFormation(formationToEdit: any): void {
+      this.isEditing = true; // Activer le mode édition
+       this.isAdding = false; // Désactiver le mode ajout
+      this.newformation.patchValue({
+        id: formationToEdit.id,
+        titre: formationToEdit.titre,
+        ecole: formationToEdit.ecole,
+        description: formationToEdit.description,
+        datedebut: formationToEdit.datedebut,
+        datefin: formationToEdit.datefin,
+        date_creation: formationToEdit.date_creation,
+        date_modification: formationToEdit.date_modification,
+        idPersonnes: formationToEdit.idPersonnes,
+        actuel: formationToEdit.actuel,
+      });
+    }  
+
+    updateFormation(): void {
+      if (this.newformation.invalid) {
+        return;
+      }
+  
+      const updatedFormation = this.newformation.value;
+      this.apiService.updateFormation(updatedFormation.id, updatedFormation).subscribe(
+        (res: any) => {
+          const index = this.dataSource.data.findIndex(form => form.id === updatedFormation.id);
+          if (index !== -1) {
+            this.dataSource.data[index] = updatedFormation;
+            this.dataSource._updateChangeSubscription(); // Déclenche la mise à jour de la table
+          }
+  
+          this.snackBar.open('Formation mise à jour avec succès', 'Fermer', { duration: 3000 });
+          this.isEditing = false; // Désactiver le mode édition après mise à jour
+        },
+        (error) => {
+          console.error('Erreur lors de la mise à jour de l\'expérience:', error);
+          this.snackBar.open('Erreur lors de la mise à jour de l\'expérience', 'Fermer', { duration: 3000 });
+        }
+      );
+    }
 
     addnewformation(){
       let formation = {
@@ -54,7 +120,9 @@ export class ModifformationComponent {
           console.log('Réponse du backend :', res);
           // Vérification de la réponse du backend
         if (res) {
+          this.dataSource.data = [res, ...this.dataSource.data];
           this.snackBar.open('Formation ajoutée avec succès', 'Fermer', { duration: 3000 });
+          this.isAdding = false; // Passer en mode édition après ajout si nécessaire
         } else {
           console.warn('error 1')
           this.snackBar.open('Problème lors de l\'ajout de la formation', 'Fermer', { duration: 3000 });
@@ -69,25 +137,32 @@ export class ModifformationComponent {
       );
     }
 
-    deleteExistformation(){
-      let id = this.deleteformation.value;
-      this.apiService.deleteExistformation(id).subscribe({
-      next: (res: any) => {
-      console.log('Réponse du backend :', res);
-      if (res === "Formation suprimmén avec succès") {
-        this.snackBar.open(res, 'ok');
-      }
-    },
-    error: (err) => {
-      if (err.status === 404) {
-        // Gestion du cas où la formation n'existe pas
-        this.snackBar.open("La formation n'existe pas.", 'ok');
-      } else {
-        // Gestion des autres erreurs
-        this.snackBar.open("Une erreur est survenue lors de la suppression", 'ok');
-      }
-    }
+    deleteExistformation(formation: any): void {
+      let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Suppression de formation',
+          message: 'Êtes-vous sûr de vouloir supprimer cette formation ?',
+        },
       });
-    }  
+  
+      dialogRef.afterClosed().subscribe(result => {
+        if (result === true) {
+          this.apiService.deleteExistformation(formation.id).subscribe(
+            (res: string) => {
+              this.snackBar.open(res, 'OK', { duration: 3000 });
+              if (res === 'deleted') {
+                this.dataSource.data = this.dataSource.data.filter(form => form.id !== formation.id);
+                this.dataSource._updateChangeSubscription();// Déclenche la mise à jour de la table
+                console.log('DataSource après mise à jour:', this.dataSource.data);
+              }
+            },
+            (error) => {
+              console.error('Erreur lors de la suppression de l\'expérience:', error);
+              this.snackBar.open('Erreur lors de la suppression de l\'expérience', 'Fermer', { duration: 3000 });
+            }
+          );
+        }
+      });
+    }
 }
 
