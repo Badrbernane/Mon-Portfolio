@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Languages Overview</mat-card-title>
+        <mat-card-subtitle>Manage and view your languages efficiently</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <button mat-icon-button color="primary" routerLink="/modiflangue" matTooltip="Edit the languages">
+            <mat-icon>edit</mat-icon>
+        </button>
+
+        <div class="languages-container">
+            <mat-card *ngFor="let item of langues; trackBy: trackByLangue" class="language-card">
+                <mat-card-header>
+                    <mat-card-title>{{ item.langueNom }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <!-- Additional details can be added here -->
+                    <div class="language-details">
+                        <p><strong>Proficiency Level:</strong> {{ item.niveau }}</p>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-card-content>
+</mat-card>

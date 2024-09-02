@@ -1,0 +1,136 @@
+<form [formGroup]="newprojet">
+    <section class="insert-exp">
+        <p>Insert Project</p>
+    
+        <mat-form-field appearance="outline" color="accent" class="entre">
+            <mat-label>Titre</mat-label>
+            <input matInput formControlName="titre">
+            <mat-error>Field is required!</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" color="accent" class="date">
+            <mat-label>Date Project</mat-label>
+            <input matInput formControlName="dateprojet">
+            <mat-error>Field is required!</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" color="accent" class="date">
+            <mat-label>Client</mat-label>
+            <input  matInput formControlName="client">
+            <mat-error>Field is required!</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" color="accent" class="">
+            <mat-label>Lien</mat-label>
+            <input  matInput formControlName="lien">
+            <mat-error>Field is required!</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" color="accent" class="">
+            <mat-label>Photo</mat-label>
+            <input  matInput formControlName="photo" >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="">
+            <mat-label>Description</mat-label>
+            <input  matInput formControlName="remarque">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent" class="date">
+            <mat-label>Date Creation</mat-label>
+            <input matInput formControlName="datecreation">
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" color="accent" class="date">
+            <mat-label>Date Modification</mat-label>
+            <input matInput formControlName="datemodification">
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" color="accent" class="idd" >
+            <mat-label>Votre ID</mat-label>
+            <input matInput formControlName="idPersonnes">
+            <mat-error>Field is required!</mat-error>
+        </mat-form-field>
+    
+        <button mat-raised-button color="warn" [disabled]="isEditing || newprojet.invalid" (click)="addnewprojet()">
+            Insert
+        </button>
+    
+        <button mat-raised-button color="primary" [disabled]="!isEditing || newprojet.invalid" (click)="updateprojet()">
+            valid update
+        </button>
+    </section>
+
+    <section class="table">
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef class="f">ID</th>
+                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="titre">
+                <th mat-header-cell *matHeaderCellDef class="f">Titre</th>
+                <td mat-cell *matCellDef="let element">{{element.titre}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="remarque">
+                <th mat-header-cell *matHeaderCellDef class="f">Description</th>
+                <td mat-cell *matCellDef="let element">{{element.remarque}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="dateprojet">
+                <th mat-header-cell *matHeaderCellDef class="f">Date Project</th>
+                <td mat-cell *matCellDef="let element">{{element.dateprojet}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="lien">
+                <th mat-header-cell *matHeaderCellDef class="f">Lien</th>
+                <td mat-cell *matCellDef="let element">{{element.lien}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="photo">
+                <th mat-header-cell *matHeaderCellDef class="f">Photo</th>
+                <td mat-cell *matCellDef="let element">{{element.photo}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="client">
+                <th mat-header-cell *matHeaderCellDef class="f">Client</th>
+                <td mat-cell *matCellDef="let element">{{element.client}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="datecreation">
+                <th mat-header-cell *matHeaderCellDef class="f">Date Creation</th>
+                <td mat-cell *matCellDef="let element">{{element.datecreation}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="datemodification">
+                <th mat-header-cell *matHeaderCellDef class="f">date modification</th>
+                <td mat-cell *matCellDef="let element">{{element.datemodification}}</td>
+            </ng-container>
+    
+            <ng-container matColumnDef="idPersonnes">
+                <th mat-header-cell *matHeaderCellDef class="f">Votre id</th>
+                <td mat-cell *matCellDef="let element">{{element.idPersonnes}}</td>
+            </ng-container>
+    
+            <<ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                    <button mat-icon-button color="primary" matTooltip="Edit this Project" (click)="editProjet(element)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+    
+                    <button mat-icon-button color="warn" matTooltip="Delete this project" (click)="deleteprojet(element)">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+    
+                </td>
+            </ng-container>
+            
+    
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns"></tr>
+            
+        </table>
+    </section>
+    </form>

@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Définir le niveau des langues</h1>
+<div mat-dialog-content>
+  <form *ngFor="let langue of data; let i = index">
+    <mat-form-field>
+      <mat-label>{{langue.nom}} - Niveau</mat-label>
+      <mat-select [value]="langue.niveau" (selectionChange)="onNiveauChange($event.value, i)">
+        <mat-option *ngFor="let niveau of niveaux" [value]="niveau">
+          {{niveau}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button (click)="save()">Sauvegarder</button>
+</div>

@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Certificates Overview</mat-card-title>
+        <mat-card-subtitle>Manage your certificates efficiently</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <button mat-icon-button color="primary" routerLink="/modifcertif" matTooltip="Edit the certificates">
+            <mat-icon>edit</mat-icon>
+        </button>
+
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let item of certificat; trackBy: trackById" class="expansion-panel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ item.nom }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <div class="panel-header-description">
+                            Title: <span>{{ item.nom }}</span>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <section class="certificate-details">
+                    <div class="certificate-link">
+                        Lien: <span>{{ item.source }}</span>
+                    </div>
+                    <div class="certificate-image">
+                        <img src="{{ item.image }}" alt="Certificate Image">
+                    </div>
+                </section>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+</mat-card>

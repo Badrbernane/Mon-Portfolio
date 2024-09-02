@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Experience Overview</mat-card-title>
+        <mat-card-subtitle>Manage your experiences efficiently</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <button mat-icon-button color="primary" routerLink="/modifexp" matTooltip="Edit the experiences">
+            <mat-icon>edit</mat-icon>
+        </button>
+
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let item of experience; trackBy: trackById" class="expansion-panel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Date :
+                        {{ item.datedebut | date:'shortDate' }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <div class="expansion-panel-header-description">
+                            The Enterprise: <span>{{ item.entreprise }}</span>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                    <section class="experience-details">
+                        <div class="detail">
+                            Date Fin: <span>{{ item.datefin | date:'shortDate' }}</span>
+                        </div>
+                        <div class="detail">
+                            Description: <span>{{ item.remarque }}</span>
+                        </div>
+                    </section>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+</mat-card>
