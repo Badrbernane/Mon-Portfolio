@@ -5,6 +5,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { ApiService } from '../../shared/services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'change-interets',
@@ -22,11 +23,13 @@ export class ChangeInteretsComponent {
   chipInterets: Interet[] = []; 
   selectedInterets: any[] = []; // Utilisez un type plus spécifique si possible
   
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private cdr: ChangeDetectorRef) {}
-
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private cdr: ChangeDetectorRef, private authService: AuthService) {}
+  
   ngOnInit(): void {
     this.loadInterets();
-    this.getInteretsByPersonneId(1048);
+    const id = this.authService.getPersonneId(); // Récupère l'ID de la personne;  // Remplacez par l'ID de la personne concernée
+    if(id)
+    this.getInteretsByPersonneId(id);
   }
 
   loadInterets(): void {
@@ -116,8 +119,8 @@ export class ChangeInteretsComponent {
   }
 
   validateInterets(): void {
-    const personneId = 1048;  // Remplacez par l'ID de la personne concernée
-
+    const personneId = this.authService.getPersonneId(); // Récupère l'ID de la personne;  // Remplacez par l'ID de la personne concernée
+    if(personneId)
     if (this.selectedInteretsIds.length > 0) {
       this.apiService.addInteretsToPerssInter(personneId, this.selectedInteretsIds)
         .subscribe(response => {
@@ -181,7 +184,8 @@ export class ChangeInteretsComponent {
   }
 
   deleteInteretByPersonneIdAndInteretId(IdInteret: number): void {
-    const personneId = 1048;
+    const personneId = this.authService.getPersonneId();
+    if(personneId)
     this.apiService.deleteInteretByPersonneIdAndInteretId(personneId, IdInteret).subscribe(
       () => {
         const index = this.Interets().findIndex(inter => inter.id === IdInteret);

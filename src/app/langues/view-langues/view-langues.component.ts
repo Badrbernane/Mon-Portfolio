@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Langue } from '../../models/models';
 import { ApiService } from '../../shared/services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'view-langues',
@@ -13,11 +14,12 @@ export class ViewLanguesComponent {
   selectedLangues: Langue[] = [];  // Correction ici
   langues: Langue[] = [];
 
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar){}
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar,private authService: AuthService){}
 
   ngOnInit(): void {
-  
-  this.apiService.getLanguesByPersonneId(1048).subscribe(
+    const id = this.authService.getPersonneId(); // Récupère l'ID de la personne;  // Remplacez par l'ID de la personne concernée
+    if(id)
+  this.apiService.getLanguesByPersonneId(id).subscribe(
     (data: any[]) => {
       console.log('API Response:', data);  // Debugging ici
       this.selectedLangues = data;

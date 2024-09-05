@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { LangueNiveauDialogComponent } from '../langue-niveau-dialog/langue-niveau-dialog.component';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'change-langues',
@@ -26,11 +27,13 @@ export class ChangeLanguesComponent implements OnInit {
   niveaux: string[] = ['Débutant', 'Intermédiaire', 'Avancé'];  // Exemples de niveaux
   
 
-  constructor(private dialog: MatDialog, private apiService: ApiService, private snackBar: MatSnackBar, private cdr: ChangeDetectorRef) {}
+  constructor(private dialog: MatDialog, private apiService: ApiService, private snackBar: MatSnackBar, private cdr: ChangeDetectorRef, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loadLangues();
-    this.getLanguesByPersonneId(1048);
+    const personneId = this.authService.getPersonneId(); // Récupère l'ID de la personne;  // Remplacez par l'ID de la personne concernée
+    if(personneId)
+    this.getLanguesByPersonneId(personneId);
   }
 
   loadLangues(): void {
@@ -55,8 +58,8 @@ export class ChangeLanguesComponent implements OnInit {
         const newLangue: any = {
           id: 0,
           nom: value,
-          datecreation: new Date(),
-          datemodification: new Date(),
+          date_creation: new Date(),
+          date_modification: new Date(),
         };
 
         delete newLangue.id;
@@ -118,7 +121,7 @@ export class ChangeLanguesComponent implements OnInit {
   }
 
   validateLangues(): void {
-    const personneId = 1048;  // Remplacez par l'ID de la personne concernée
+    
     const selectedLangues = this.chipLangues.filter(langue => this.selectedLangueIds.includes(langue.id));
 
     const dialogRef = this.dialog.open(LangueNiveauDialogComponent, {
@@ -136,9 +139,10 @@ export class ChangeLanguesComponent implements OnInit {
           langueId: langue.id,
           niveau: langue.niveau
       }));
-
-
-      console.log('Données envoyées:', { personneId, langues: languesToSend });
+      console.log('Langues à envoyer:', languesToSend); // Ajouté pour débogage
+      
+      const personneId = this.authService.getPersonneId();
+      if(personneId)
         // Appeler l'API pour enregistrer les langues et leurs niveaux
         this.apiService.addLanguesToPerssLang(personneId, languesToSend).subscribe(
           response => {
@@ -158,7 +162,7 @@ export class ChangeLanguesComponent implements OnInit {
       }
     });
   }
-
+  
   getLanguesByPersonneId(personneId: number): void {
     this.apiService.getLanguesByPersonneId(personneId).subscribe(
       (data: any[]) => {
@@ -178,7 +182,8 @@ export class ChangeLanguesComponent implements OnInit {
 
 
   deleteLangueByPersonneIdAndLangueId(LangueId: number): void {
-    const personneId = 1048;
+    const personneId = this.authService.getPersonneId();
+    if(personneId)
     this.apiService.deleteLangueByPersonneIdAndLangueId(personneId, LangueId).subscribe(
       () => {
         const index = this.langues().findIndex(lang => lang.id === LangueId);

@@ -5,6 +5,7 @@ import { MatChipEditedEvent, MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { ApiService } from '../../shared/services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'change-competence',
@@ -22,11 +23,13 @@ export class ChangeCompetenceComponent implements OnInit {
   chipCompetences: competence[] = []; 
   selectedCompetences: any[] = []; // Utilisez un type plus spécifique si possible
   
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private cdr: ChangeDetectorRef) {}
+  constructor(private apiService: ApiService, private snackBar: MatSnackBar, private cdr: ChangeDetectorRef, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.loadCompetences();
-    this.getCompetencesByPersonneId(1048);  // Remplacez par l'ID de la personne concernée
+    const id = this.authService.getPersonneId(); // Récupère l'ID de la personne;  // Remplacez par l'ID de la personne concernée
+    if(id)
+    this.getCompetencesByPersonneId(id);  // Remplacez par l'ID de la personne concernée
   }
 
   loadCompetences(): void {
@@ -116,8 +119,8 @@ export class ChangeCompetenceComponent implements OnInit {
   }
 
   validateCompetences(): void {
-    const personneId = 1048;  // Remplacez par l'ID de la personne concernée
-
+    const personneId = this.authService.getPersonneId(); // Récupère l'ID de la personne;  // Remplacez par l'ID de la personne concernée
+    if(personneId)
     if (this.selectedCompetenceIds.length > 0) {
       this.apiService.addCompetencesToPerssComp(personneId, this.selectedCompetenceIds)
         .subscribe(response => {
@@ -181,7 +184,8 @@ export class ChangeCompetenceComponent implements OnInit {
   }
 
   deleteCompetenceByPersonneIdAndCompetenceId(competenceId: number): void {
-    const personneId = 1048;
+    const personneId = this.authService.getPersonneId();
+    if(personneId)
     this.apiService.deleteCompetenceByPersonneIdAndCompetenceId(personneId, competenceId).subscribe(
       () => {
         const index = this.competences().findIndex(comp => comp.id === competenceId);
