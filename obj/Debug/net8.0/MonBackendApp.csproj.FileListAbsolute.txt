@@ -135,3 +135,10 @@ C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\obj\Debug\net8.0\refint\MonBac
 C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\obj\Debug\net8.0\MonBackendApp.pdb
 C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\obj\Debug\net8.0\MonBackendApp.genruntimeconfig.cache
 C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\obj\Debug\net8.0\ref\MonBackendApp.dll
+C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\bin\Debug\net8.0\angular.json
+C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\bin\Debug\net8.0\package-lock.json
+C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\bin\Debug\net8.0\package.json
+C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\bin\Debug\net8.0\tsconfig.app.json
+C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\bin\Debug\net8.0\tsconfig.json
+C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\bin\Debug\net8.0\tsconfig.spec.json
+C:\Users\BERNANE\Desktop\projet PFA\MonBackendApp\obj\Debug\net8.0\MonBackendApp.sourcelink.json

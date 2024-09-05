@@ -3,12 +3,12 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copier les fichiers de projet et restaurer les dépendances
-COPY ["MonBackendApp/MonBackendApp.csproj", "MonBackendApp/"]
-RUN dotnet restore "MonBackendApp/MonBackendApp.csproj"
+COPY ["MonBackendApp.csproj", "."]
+RUN dotnet restore "MonBackendApp.csproj"
 
 # Copier le reste des fichiers et construire l'application
 COPY . .
-WORKDIR "/src/MonBackendApp"
+WORKDIR "/src"
 RUN dotnet build "MonBackendApp.csproj" -c Release -o /app/build
 
 # Étape 2 : Publier l'application
@@ -20,3 +20,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MonBackendApp.dll"]
+
