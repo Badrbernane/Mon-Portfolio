@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowLocalhost",
         builder => builder
-            .WithOrigins("http://localhost:4200")
+            .WithOrigins("http://localhost:4200", "https://adorable-gumption-345b41.netlify.app/")
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
