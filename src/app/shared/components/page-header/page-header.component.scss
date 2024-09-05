@@ -1,0 +1,16 @@
+mat-toolbar {
+    background-color: #f1beeb;
+    .spacer{
+        flex: 1 1 auto;
+    }
+    .user-info{
+        display: flex;
+        align-items: center;
+
+        button{
+            margin-left: 1.5rem;
+            background-color: aliceblue;
+            margin-right: 1.5rem;
+        }
+    }
+}

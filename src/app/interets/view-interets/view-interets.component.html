@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Interests Overview</mat-card-title>
+        <mat-card-subtitle>Manage and view your interests efficiently</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <button mat-icon-button color="primary" routerLink="/modifInteret" matTooltip="Edit the Interests">
+            <mat-icon>edit</mat-icon>
+        </button>
+
+        <div class="interests-container">
+            <mat-card *ngFor="let item of Interets; trackBy: trackByInteret" class="interest-card">
+                <mat-card-header>
+                    <mat-card-title>{{ item.centreInteretNom }}</mat-card-title>
+                    <mat-card-subtitle>Date: {{ item.date_creation | date }}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <!-- Additional details can be added here -->
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-card-content>
+</mat-card>

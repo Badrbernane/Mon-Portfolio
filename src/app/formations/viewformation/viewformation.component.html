@@ -1,0 +1,72 @@
+<mat-form-field color="warn" appearance="outline">
+    <mat-label>Search Formation</mat-label>
+    <input matInput (input)="searchformations(searchField.value)" #searchField placeholder="Enter formation title">
+    <button mat-icon-button matSuffix>
+        <mat-icon>search</mat-icon>
+    </button>
+</mat-form-field>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Available Trainings</mat-card-title>
+        <mat-card-subtitle>Find all the training here</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-accordion multi="true">
+            <mat-expansion-panel *ngFor="let item of filteredFormations; trackBy: trackById">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>{{ item.titre }}</mat-panel-title>
+                    <mat-panel-description>{{item.ecole}}</mat-panel-description>
+                </mat-expansion-panel-header>
+                
+                <table mat-table [dataSource]="[item]" class="mat-elevation-z4">
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef> ID </th>
+                        <td mat-cell *matCellDef="let element">{{element.id}}</td>
+                    </ng-container>
+                    
+                    <!-- Ecole Column -->
+                    <ng-container matColumnDef="ecole">
+                        <th mat-header-cell *matHeaderCellDef> School </th>
+                        <td mat-cell *matCellDef="let element">{{element.ecole}}</td>
+                    </ng-container>
+
+                    <!-- Description Column -->
+                    <ng-container matColumnDef="description">
+                        <th mat-header-cell *matHeaderCellDef> Description </th>
+                        <td mat-cell *matCellDef="let element">{{element.description}}</td>
+                    </ng-container>
+
+                    <!-- Start Date Column -->
+                    <ng-container matColumnDef="datedebut">
+                        <th mat-header-cell *matHeaderCellDef> Start Date </th>
+                        <td mat-cell *matCellDef="let element">{{element.datedebut | date}}</td>
+                    </ng-container>
+
+                    <!-- End Date Column -->
+                    <ng-container matColumnDef="datefin">
+                        <th mat-header-cell *matHeaderCellDef> End Date </th>
+                        <td mat-cell *matCellDef="let element">{{element.datefin | date}}</td>
+                    </ng-container>
+
+                    <!-- Current Column -->
+                    <ng-container matColumnDef="actuel">
+                        <th mat-header-cell *matHeaderCellDef> Current </th>
+                        <td mat-cell *matCellDef="let element">
+                            <mat-icon [ngClass]="{'text-success': element.actuel, 'text-danger': !element.actuel}">
+                                {{ element.actuel ? 'check_circle' : 'cancel' }}
+                            </mat-icon>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-stroked-button color="warn" routerLink="/modifformation">Update Formations</a>
+    </mat-card-actions>
+</mat-card>

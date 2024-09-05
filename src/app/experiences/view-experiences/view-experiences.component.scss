@@ -1,0 +1,83 @@
+/*mat-expansion-panel{
+    width: 1000px;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+}
+
+button {
+    margin-left: 1015px;
+    margin-bottom: 10px;
+    padding: auto;
+    
+}
+div{
+    span{
+        color: rgb(37, 8, 65);
+    }
+}
+
+.sg{
+    color: rgb(19, 22, 22);
+    }
+mat-panel-title{
+    span{
+        font-size: 1.2rem;
+        font-weight: bold;
+        font-style: italic;
+        margin-right: 1rem;
+    }
+}*/
+
+/* Card styling */
+mat-card {
+    margin: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Expansion panel styling */
+.expansion-panel {
+    margin: 8px 0;
+}
+
+/* Header and Description Styling */
+.mat-expansion-panel-header {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.expansion-panel-header-description {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+/* Details Section Styling */
+.experience-details {
+    padding: 16px;
+}
+
+.detail {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.detail span {
+    font-weight: 500;
+}
+
+/* Animations for Expansion Panels */
+.mat-expansion-panel-body {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.mat-expansion-panel-body.mat-expanded {
+    max-height: 500px; /* Adjust based on content */
+}
+
+/* Button styling */
+button.mat-icon-button {
+    margin: 8px;
+}
+

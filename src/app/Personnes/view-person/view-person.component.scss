@@ -1,0 +1,28 @@
+mat-card{
+    margin-left: 17rem;
+    margin-top: 3rem;
+    width: 500px; 
+    background-color: rgb(235, 238, 237);
+
+    mat-card-title{
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: rgb(68, 53, 35);
+    margin-left: 7rem;
+    }
+}
+
+mat-card-content{
+    table{
+        margin-top: 1rem;
+        .mat-column-name {
+            border-right: 1px solid rgb(85, 59, 59);
+        }
+
+        .mat-mdc-header-cell,
+        .mat-mdc-cell{
+            font-size: 1.3rem;
+        }
+    }
+}

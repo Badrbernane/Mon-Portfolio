@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Project Overview</mat-card-title>
+        <mat-card-subtitle>Manage your projects efficiently</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+        <button mat-icon-button color="primary" routerLink="/modifproject" matTooltip="Edit the projects">
+            <mat-icon>edit</mat-icon>
+        </button>
+
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let item of projet; trackBy: trackById" class="expansion-panel">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ item.dateprojet | date:'shortDate' }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <div class="panel-header-description">
+                            Title: <span>{{ item.titre }}</span>
+                        </div>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <section class="project-details">
+                    <div class="project-image">
+                        <img src="{{ item.photo }}" alt="Project Image">
+                    </div>
+                    <div class="project-info">
+                        <div class="info-item">
+                            Lien: <span>{{ item.lien }}</span>
+                        </div>
+                        <div class="info-item">
+                            Description: <span>{{ item.remarque }}</span>
+                        </div>
+                        <div class="info-item">
+                            Client: <span>{{ item.client }}</span>
+                        </div>
+                    </div>
+                </section>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-card-content>
+</mat-card>
