@@ -40,7 +40,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Portfolio API V1");
-        c.RoutePrefix = "docs"; // Pour accéder à Swagger UI à la racine de l'application (http://localhost:<port>/)
+        c.RoutePrefix = ""; // Pour accéder à Swagger UI à la racine de l'application (http://localhost:<port>/)
     });
 }
 
@@ -51,4 +51,4 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-app.Run();
+app.Run("https://0.0.0.0:8080");
