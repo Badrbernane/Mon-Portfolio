@@ -42,13 +42,17 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Portfolio API V1");
         c.RoutePrefix = ""; // Pour accéder à Swagger UI à la racine de l'application (http://localhost:<port>/)
     });
+}
+
+if (!app.Environment.IsDevelopment())
+{
     app.UseHttpsRedirection();
 }
 
 // Ajouter CORS avant HTTPS redirection
 app.UseCors("AllowLocalhost");
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
