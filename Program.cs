@@ -47,7 +47,12 @@ if (app.Environment.IsDevelopment())
 // Ajouter CORS avant HTTPS redirection
 app.UseCors("AllowLocalhost");
 
-app.UseHttpsRedirection();
+// Ajouter HTTPS redirection uniquement en production
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
+
 app.UseAuthorization();
 app.MapControllers();
 
