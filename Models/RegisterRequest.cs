@@ -2,11 +2,11 @@ namespace MonBackendApp.Models
 {
     public class RegisterRequest
     {
-        public string gmail { get; set; }
-        public string motdepasse { get; set; }
-        public string nom { get; set; }
-        public string prenom { get; set; }
-        public string numTelephone { get; set; }
-        public string motdepasseconfirmation { get; set; }
+        public required string gmail { get; set; }
+        public required string motdepasse { get; set; }
+        public required string nom { get; set; }
+        public required string prenom { get; set; }
+        public required string numTelephone { get; set; }
+        public required string motdepasseconfirmation { get; set; }
     }
 }

@@ -2,7 +2,7 @@ namespace MonBackendApp.Models
 {
     public class LoginRequest
     {
-        public string gmail { get; set; }
-        public string motdepasse { get; set; }
+        public required string gmail { get; set; }
+        public required string motdepasse { get; set; }
     }
 }

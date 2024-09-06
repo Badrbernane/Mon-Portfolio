@@ -3,9 +3,9 @@ namespace MonBackendApp.Models
     public class PerssLang
     {
         public int idPersonnes { get; set; }
-        public Personne personne { get; set; }
+        public required Personne personne { get; set; }
         public int idLangues { get; set; }
-        public Langue langue { get; set; }
-        public string niveau { get; set; }
+        public required Langue langue { get; set; }
+        public required string niveau { get; set; }
     }
 }

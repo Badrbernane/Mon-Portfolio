@@ -4,7 +4,7 @@ using MonBackendApp.Models;
 public class CentreIntéret
 {
     public int id { get; set; }
-    public string nom { get; set; }
+    public required string nom { get; set; }
     public DateTime datecreation { get; set; }
     public DateTime datemodification { get; set; }
     [JsonIgnore]
