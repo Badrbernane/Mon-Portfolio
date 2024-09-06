@@ -32,7 +32,7 @@ var app = builder.Build();
 
 // Configurer le pipeline de requêtes HTTP.
 if (app.Environment.IsDevelopment())
-{
+{   
     app.UseDeveloperExceptionPage();
     // Activer middleware pour servir les fichiers JSON Swagger générés
     app.UseSwagger();
@@ -42,6 +42,7 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Portfolio API V1");
         c.RoutePrefix = ""; // Pour accéder à Swagger UI à la racine de l'application (http://localhost:<port>/)
     });
+    app.UseHttpsRedirection();
 }
 
 // Ajouter CORS avant HTTPS redirection
