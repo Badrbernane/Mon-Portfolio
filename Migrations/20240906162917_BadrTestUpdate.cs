@@ -5,7 +5,7 @@
 namespace MonBackendApp.Migrations
 {
     /// <inheritdoc />
-    public partial class badrtest1 : Migration
+    public partial class BadrTestUpdate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

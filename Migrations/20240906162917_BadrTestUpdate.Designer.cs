@@ -12,8 +12,8 @@ using MonBackendApp.Data;
 namespace MonBackendApp.Migrations
 {
     [DbContext(typeof(badrDbContext))]
-    [Migration("20240905102446_badrtest1")]
-    partial class badrtest1
+    [Migration("20240906162917_BadrTestUpdate")]
+    partial class BadrTestUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

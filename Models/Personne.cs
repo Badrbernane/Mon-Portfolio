@@ -20,7 +20,7 @@ namespace MonBackendApp.Models
         public string lieninstagram { get; set; }
         public string lientwitter { get; set; }
         public string cv { get; set; }
-        public string numTelephone { get; set; }
+        public required string numTelephone { get; set; }
         public int? nombredexperience { get; set; }
         public DateTime datecreation { get; set; }
         public DateTime datemodification { get; set; }

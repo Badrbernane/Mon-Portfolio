@@ -44,15 +44,10 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-if (!app.Environment.IsDevelopment())
-{
-    app.UseHttpsRedirection();
-}
-
 // Ajouter CORS avant HTTPS redirection
 app.UseCors("AllowLocalhost");
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
